@@ -6,15 +6,6 @@ resource "aws_s3_bucket" "S3_tf" {
   }
 }
 
-terraform {
-  backend "s3" {
-    bucket                 = "s3_desde_GHA"
-    region                 = "us-east-1"
-    key                    = "backend.tfstate"
-    dynamodb_table         = "terraformstatelock2"
-  }
-}
-
 resource "aws_dynamodb_table" "dynamodb_tf" {
   name           = "dynamo_desde_tf"
   billing_mode   = "PAY_PER_REQUEST"  # Modelo de facturación (ajústalo según tus necesidades)
