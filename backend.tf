@@ -1,7 +1,7 @@
 
 terraform {
   backend "s3" {
-    bucket                 = aws_s3_bucket.S3_tf.id
+    bucket                 = "s3_desde_GHA"
     region                 = "us-east-1"
     key                    = "backend.tfstate"
     dynamodb_table         = "terraformstatelock2"
