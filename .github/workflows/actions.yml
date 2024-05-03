@@ -10,13 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
-      - name: Download create_apache.sh.base64
+      - name: Download create_apache.sh
         uses: actions/download-artifact@v3
         with:
           name: create_apache.sh
       - name: Decode create_apache.sh
         run: |
-          base64 -d create_apache.sh.base64 > create_apache.sh
+          base64 -d create_apache.sh> create_apache.sh
           chmod +x create_apache.sh
       - name: Terraform Init
         env:
