@@ -12,11 +12,3 @@ resource "aws_instance" "webserver" {
     Name = "webserver"
   }
 }
-
-resource "aws_s3_bucket" "S3_tf" {
-  bucket = "s3_desde_GHA"  # Nombre único para tu bucket
-  acl    = "private"    # Control de acceso (ajústalo según tus necesidades)
-  tags = {
-    Name = "Soy un bucket generado desde Terraform"
-  }
-}
