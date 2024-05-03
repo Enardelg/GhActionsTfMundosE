@@ -17,8 +17,6 @@ jobs:
         run: terraform plan
       - name: Terraform Apply
         run: terraform apply -auto-approve
-      - name: Run create_apache.sh
-        run: ./create_apache.sh
       - name: Upload Webserver Public IP
         uses: actions/upload-artifact@v3
         with:
