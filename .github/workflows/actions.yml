@@ -13,7 +13,7 @@ jobs:
       - name: Download create_apache.sh.base64
         uses: actions/download-artifact@v3
         with:
-          name: create_apache_script
+          name: create_apache.sh
       - name: Decode create_apache.sh
         run: |
           base64 -d create_apache.sh.base64 > create_apache.sh
