@@ -19,6 +19,9 @@ jobs:
           base64 -d create_apache_sh.base64 > create_apache.sh
           chmod +x create_apache.sh
       - name: Terraform Init
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform init
       - name: Terraform Plan
         run: terraform plan
