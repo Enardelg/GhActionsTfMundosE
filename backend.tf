@@ -1,7 +1,14 @@
+resource "aws_s3_bucket" "S3_tf" {
+  bucket = "s3_desde_GHA"  # Nombre único para tu bucket
+  acl    = "private"    # Control de acceso (ajústalo según tus necesidades)
+  tags = {
+    Name = "Soy un bucket generado desde Terraform"
+  }
+}
 
 terraform {
   backend "s3" {
-    bucket                 = "s3_desde_GHA"
+    bucket                 = "aws_s3_bucket.s3_desde_GHA"
     region                 = "us-east-1"
     key                    = "backend.tfstate"
     dynamodb_table         = "terraformstatelock2"
