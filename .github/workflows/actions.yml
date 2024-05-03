@@ -1,0 +1,34 @@
+name: Terraform_and_Apache_Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - name: Download create_apache_script.base64
+        uses: actions/download-artifact@v3
+        with:
+          name: create_apache_script
+      - name: Decode create_apache.sh
+        run: |
+          base64 -d create_apache_sh.base64 > create_apache.sh
+          chmod +x create_apache.sh
+      - name: Terraform Init
+        run: terraform init
+      - name: Terraform Plan
+        run: terraform plan
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+      - name: Run create_apache.sh
+        run: ./create_apache.sh
+      - name: Upload Webserver Public IP
+        uses: actions/upload-artifact@v3
+        with:
+          name: webserver_public_ip
+          path: ${{ steps.get_public_ip.outputs.public_ip }}
+
