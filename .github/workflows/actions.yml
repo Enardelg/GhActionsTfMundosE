@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
-      - name: Download create_apache_script.base64
+      - name: Download create_apache.sh.base64
         uses: actions/download-artifact@v3
         with:
           name: create_apache_script
